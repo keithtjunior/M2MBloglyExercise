@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100vh;
+}
+#main {
+    padding: 1rem;
+}
+h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+h6 {
+    font-weight: 500;
+}
+.tag-name {
+    color: #0b5ed7;
+}
+.msg,
+.error-card,
+.list-group, 
+.form-user-new, 
+.form-user-edit, 
+.user-card, 
+.user-posts, 
+.post-card, 
+.form-post-new, 
+.form-post-edit,
+.tag-card,
+.form-tag-new, 
+.form-tag-edit,
+.recent-posts {
+    margin: 0 auto;
+    width: 500px;
+}
+.form-user-delete, .form-post-delete, .form-tag-delete {
+    display: inline-block;
+}
+.home-link, .user-add, .user-card, .post-card, .tag-card {
+    margin-top: 1.5rem;
+}
+.post-small, .error-info {
+    display: block;
+}
+.recent-posts-link {
+    color: inherit;
+    text-decoration: none;
+}
+.user-link {
+    color: inherit;
+    text-decoration: none;
+}
+.user-link:hover {
+    color: #0b5ed7;
+    text-decoration: none;
+}

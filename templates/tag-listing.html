@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Tag Listing{% endblock %}
+{% block content %}
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <h1>Tags</h1>
+                <div class="list-group">
+                    {% if tags %}
+                        {% for tag in tags %}
+                            <a href="/tags/{{tag.id}}" class="list-group-item list-group-item-action">{{tag.name}}</a>
+                        {% endfor %}
+                    {% else %}
+                        <a class="list-group-item list-group-item-action disabled" aria-disabled="true">No Tags Available</a>
+                    {% endif %}
+                </div>
+                <a class="btn btn-secondary user-add" href="/tags/new" role="button">Add Tag</a>
+                <a class="btn btn-primary home-link" href="/" role="button">Home</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

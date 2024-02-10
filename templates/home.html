@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Blogly | Home{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mb-4">Blogly Recent Posts</h1>
+                <div class="accordion recent-posts" id="recent-posts">
+                    {% if posts %}
+                        {% for post in posts %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button {{'collapsed' if loop.index > 1 else ''}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}">
+                                    {{post.title}}
+                                </button>
+                                </h2>
+                                <div id="collapse{{loop.index}}" class="accordion-collapse collapse {{'show' if loop.index == 1 else ''}}" data-bs-parent="#recent-posts">
+                                    <a href="/posts/{{post.id}}" class="recent-posts-link">
+                                        <div class="accordion-body">
+                                            <p>{{post.content}}</p>
+                                            <small class="text-body-secondary mb-3 post-small">By <a class="user-link" href="/users/{{post.user.id}}">{{post.user.full_name}}</a> on {{post.created_at.strftime('%a %b %d %Y, %I:%M %p')}}</small>
+                                            <div class="d-flex flex-row mb-3">
+                                                {% if post.tags %}
+                                                    <h6>Tags: 
+                                                    {% for tag in post.tags %}
+                                                        <a href="/tags/{{tag.id}}"><span class="badge bg-primary">{{tag.name}}</span></a>
+                                                    {% endfor %}
+                                                    </h6>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="card">
+                            <div class="card-body text-center">
+                                No Posts Available
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-3 text-center">
+                <a class="btn btn-primary user-list" href="/users" role="button">View Users</a>
+                <a class="btn btn-primary tag-list" href="/tags" role="button">View Tags</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
